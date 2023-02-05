@@ -31,14 +31,13 @@ class _listFootballState extends State<listFootball> {
 
     final res = await http.get(
         Uri.parse(
-          "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l=English%20Premier%20League"
+          "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English%20Premier%20League"
         )
     );
-    print("status code : " + res.statusCode.toString());
-    
-    premiereLeagueModel = 
-        PremiereLeagueModel.fromJson(json.decode(res.body.toString()));
-    print("team 0 : " + premiereLeagueModel!.teams![0].strTeam.toString());
+
+    premiereLeagueModel = PremiereLeagueModel.fromJson(json.decode(res.body.toString()));
+
+
 
     setState(() {
       isLoaded = true;
