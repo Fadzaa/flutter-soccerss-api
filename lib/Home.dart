@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
 
     final res = await http.get(
         Uri.parse(
-            "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l=English%20Premier%20League"
+            "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English%20Premier%20League"
         )
     );
     print("status code : " + res.statusCode.toString());
@@ -220,9 +220,14 @@ class _HomeState extends State<Home> {
                                         child: Container(
                                           height: 70,
                                           width: 70,
-                                          child: Image.network(
-                                              premiereLeagueModel!.teams![index].strTeamJersey.toString()),
-                                        ),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(20)
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Image.network(premiereLeagueModel!.teams![index].strTeamJersey.toString()),
+                                          ),
+                                          )
                                       )
                                     ],
                                   ),
@@ -277,9 +282,12 @@ class _HomeState extends State<Home> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
 
-                                  child: Image.network(
-                                    premiereLeagueModel!.teams![index].strTeamFanart1.toString(),
-                                    fit: BoxFit.cover,),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                  premiereLeagueModel!.teams![index].strTeamFanart1.toString(),
+                                  fit: BoxFit.cover,),
+                                  ),
                                 ),
                               ),
                             );
